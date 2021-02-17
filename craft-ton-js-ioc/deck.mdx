@@ -1,0 +1,446 @@
+import './script.js'
+import {Appear, Notes} from 'mdx-deck'
+import {FirstSlide} from './components/first-slide'
+import * as Accordions from './components/accordion/implementations'
+import * as Tabs from './components/tabs/implementations'
+import {CodeBlock} from './components/code-block'
+import WhiteLayout from './components/white-layout'
+import {aprocalypse} from './components/aprocalypse'
+import {accordionCode} from './components/accordion-code'
+import {Sobbing, Sob} from './components/sob'
+import {RandomlyPlaced} from './components/randomly-placed'
+import {DemoSlide} from './components/demo-slide'
+import DemoLayout from './components/demo-layout'
+import {Resources} from './components/resources'
+import {filterCodePt1} from "./components/filter-code-1"
+import {filterCodePt2} from "./components/filter-code-2"
+
+export {default as theme} from './theme'
+
+export default WhiteLayout
+
+<FirstSlide
+  title="️Craft ton JS"
+  subtitle="Rendez vos composants flexible"
+/>
+
+---
+
+# De quoi va-t-on parler ?
+
+- Cycle de vie d'un composant
+- Comment simplifier votre code ?
+- La composition
+
+<img width="70px" height="70px" src="public/standard/smile.png" />
+
+---
+
+# On ne parlera pas de
+
+<div style={{fontSize: 40, textAlign: 'left'}}>
+  <ul>
+    <li>
+      <strong>Comment</strong> implementer différents patterns
+    </li>
+  </ul>
+</div>
+
+<img width="70px" height="70px" src="public/sweat-smile.png" />
+
+---
+
+# Le cycle de vie d'un composant
+
+<div>
+    <div
+        style={{
+            fontSize: '0.8em',
+            position: 'absolute',
+            bottom: 50,
+            left: 0,
+            width: '100vw',
+            textAlign: 'center',
+            borderRadius: 6,
+            padding: 4,
+            backgroundColor: 'rgba(1,22,39, 0.6)',
+        }}
+    >
+    </div>
+</div>
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`<Accordion items={accordionItems} />`}
+  accordion={<Accordions.Standard />}
+/>
+
+```notes
+- Following the lifecycle of an Accordion
+- Make it for your use case
+- Props API is pretty simple
+- Theme/Font shoutout
+- New Use Case: Above
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`<Accordion items={accordionItems} above={true} />`}
+  accordion={<Accordions.Above />}
+/>
+
+```notes
+- Just a few conditional statements (position, hand, animation)
+- New Use Case: Right
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`<Accordion items={accordionItems} right={true} />`}
+  accordion={<Accordions.Right />}
+/>
+
+```notes
+- Refactor to use CSS Grid and use gridAutoFlow for column vs row
+- New Use Case: Left
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`<Accordion items={accordionItems} left={true} />`}
+  accordion={<Accordions.Left />}
+  followCode={`<Accordion items={accordionItems} position="left" />`}
+/>
+
+```notes
+- Refactor the props to use position because David K. Piano said impossible states is a no-no
+- New Use Case: Single
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`
+<Accordion
+  items={accordionItems}
+  position="bottom"
+  single={true}
+/>
+  `}
+  accordion={<Accordions.Single />}
+/>
+
+```notes
+- Some conditional logic in the click handler
+- New Use Case: Prevent Close
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`
+<Accordion
+  items={accordionItems}
+  position="bottom"
+  preventClose={true}
+/>
+  `}
+  accordion={<Accordions.PreventClose />}
+/>
+
+```notes
+- Some additional conditional logic in the click handler
+- New Use Case: SinglePreventClose
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`
+<Accordion
+  items={accordionItems}
+  position="bottom"
+  single={true}
+  preventClose={true}
+/>
+  `}
+  accordion={<Accordions.SinglePreventClose />}
+/>
+
+```notes
+- Luckily no changes necessary!
+- But this looks familiar! New Use Case: Tabs
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`
+<Accordion
+  items={accordionItems}
+  position="bottom"
+  single={true}
+  preventClose={true}
+  tabs={true}
+/>
+  `}
+  accordion={<Tabs.Standard />}
+/>
+
+<Appear>
+  <div />
+  <img src="public/cry.png" />
+</Appear>
+
+```notes
+- Write tabs UI in a different method `renderTabs`
+- Cry!
+- New Use Case: Tabs Above
+```
+
+---
+
+export default DemoLayout
+
+<DemoSlide
+  code={`<Tabs items={tabItems} position="top" />`}
+  accordion={<Tabs.Above />}
+/>
+
+<Appear>
+  <div />
+  <img src="public/sob.png" />
+</Appear>
+
+```notes
+- I don't want to maintain this anymore
+- Fork the component to make a tabs component
+- Sob
+```
+
+---
+
+<CodeBlock>{aprocalypse}</CodeBlock>
+
+<Sobbing />
+
+```notes
+- Datepicker with 60 props
+- "Configuration Props" (objects with dozens of options, basically just more props)
+- "render" props: boolean props to control whether something is rendered
+- Bundle: Code you don't need
+- Maintenance: Documentation, answering questions
+- Implementation: Remembering use cases and not breaking things. Contributors.
+- API: Having to learn the growing API
+- APROPCALYPSE
+```
+
+---
+
+# Inversion of control
+
+<div>
+    <div
+        style={{
+            fontSize: '0.8em',
+            position: 'absolute',
+            bottom: 50,
+            left: 0,
+            width: '100vw',
+            textAlign: 'center',
+            borderRadius: 6,
+            padding: 4,
+            backgroundColor: 'rgba(1,22,39, 0.6)',
+        }}
+    >
+    </div>
+</div>
+
+---
+
+<CodeBlock style={{fontSize: 14}}>{filterCodePt1}</CodeBlock>
+
+```notes
+Pas d'inversion de controle
+```
+---
+
+<CodeBlock style={{fontSize: 14}}>{filterCodePt2}</CodeBlock>
+
+```notes
+Avec inversion de controle
+```
+---
+
+<img style={{maxWidth: '100%'}} src="public/what-if.jpg" />
+
+```notes
+(notes for next slide...)
+- I might have manually changed the code post-prettier :)
+- Don't worry about the specific implementation details.
+- Two major patterns that allow this:
+  - stateReducer
+  - render props
+- Inversion of control patterns
+```
+
+---
+
+export default ({children}) => (
+  <div style={{overflow: 'scroll'}}>{children}</div>
+)
+
+<CodeBlock style={{fontSize: 14}}>{accordionCode}</CodeBlock>
+
+<!--
+  cannot have notes on this slide for some reason...
+  There's an infinite loop in React code and a warning
+  in the console about history...
+-->
+
+---
+
+# Demo
+
+[CodeSandbox](https://codesandbox.io/s/craft-ton-js-inversion-of-control-7v91d)
+
+```notes
+- Composition allows for the same simple API
+```
+---
+
+# Mise en garde
+
+Et si vous n'aviez besoin que de ceci ?
+
+<div
+  style={{
+    position: 'relative',
+    height: 400,
+    width: 400,
+    margin: 'auto',
+  }}
+>
+  <div style={{position: 'absolute'}}>
+    <Accordions.Standard />
+  </div>
+</div>
+
+---
+
+# YAGNI
+
+<small>You Ain't Gonna Need It</small>
+<Appear>
+  <div>
+    <strong style={{fontSize: '2em'}}>Optimize for deletability</strong>
+  </div>
+  <div>
+    <video
+      style={{display: 'block', maxWidth: '100%', margin: 'auto'}}
+      autoPlay
+      playsInline
+      loop
+      muted
+      src="public/erased-from-existence.mp4"
+    />
+  </div>
+</Appear>
+
+```notes
+- Be mindful and intentional
+- Measure the costs and the benefits.
+- Just go with what you have and see how it plays out.
+- Optimize for deletability
+- Erased from existence!
+```
+
+---
+
+# Utilisez des patterns pour _simplifier_ votre API
+
+<Appear>
+  <div>
+    <RandomlyPlaced
+      style={{
+        transform: 'rotate(20deg)',
+        top: '20%',
+        left: '10%',
+      }}
+    >
+      state reducers
+    </RandomlyPlaced>
+  </div>
+  <div>
+    <RandomlyPlaced
+      style={{
+        transform: 'rotate(30deg)',
+        bottom: '10%',
+        left: '10%',
+      }}
+    >
+      control props
+    </RandomlyPlaced>
+  </div>
+  <div>
+    <RandomlyPlaced
+      style={{
+        transform: 'rotate(10deg)',
+        bottom: '70%',
+        right: '10%',
+      }}
+    >
+      hook composition
+    </RandomlyPlaced>
+  </div>
+  <div>
+    <RandomlyPlaced
+      style={{
+        transform: 'rotate(-10deg)',
+        bottom: '10%',
+        right: '30%',
+      }}
+    >
+      compound components
+    </RandomlyPlaced>
+  </div>
+</Appear>
+
+```notes
+- Applying old principles (like composition and inversion of control)
+```
+
+---
+
+# Merci
+
+<img width="70px" height="70px" src="public/standard/wave.png" />
+
+[simply-react.netlify.com](https://simply-react.netlify.com)
+
+<div style={{
+    fontSize: '1rem',
+}}>
+    <div>Ressources: <a href="https://kentcdodds.com/blog/inversion-of-control">Inversion of control</a> de Kent C. Dodds</div>
+    <div>Theme: Night Owl by Sarah Drasner</div>
+    <div>Font: Dank Mono by Phil Plückthun</div>
+</div>

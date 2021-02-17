@@ -1,0 +1,35 @@
+{
+  "name": "craft-ton-js-ioc",
+  "version": "1.0.0",
+  "description": "Présentation sur comment rendre ses composants plus flexibles",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "prebuild": "rimraf dist",
+    "build": "npm run build:site && npm run build:pdf",
+    "build:site": "mdx-deck build deck.mdx",
+    "build:pdf": "mdx-deck pdf deck.mdx",
+    "postbuild": "cpy --parents \"public/**\" ./dist"
+  },
+  "keywords": [],
+  "author": "Fabrice TAVILLA",
+  "license": "MIT",
+  "devDependencies": {
+    "cpy-cli": "^2.0.0",
+    "css-loader": "^1.0.0",
+    "mdx-deck": "^1.6.3",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.22.1"
+  },
+  "dependencies": {
+    "codemirror": "^5.39.2",
+    "emotion": "^9.2.6",
+    "react": "^16.13.1",
+    "react-codemirror2": "^5.1.0",
+    "react-dom": "^16.13.1",
+    "react-emotion": "^9.2.6",
+    "react-particles-js": "^3.4.1",
+    "react-pose": "^2.2.1",
+    "react-transition-group": "^2.4.0"
+  }
+}
