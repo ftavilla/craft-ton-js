@@ -1,0 +1,11 @@
+{
+  "name": "craft-ton-js",
+  "version": "1.0.0",
+  "description": "Séries Craft Ton Js",
+  "scripts": {
+    "build:craft-ton-js-ioc": "npm run build --prefix ./craft-ton-js-ioc"
+  },
+  "keywords": [],
+  "author": "Fabrice TAVILLA",
+  "license": "MIT"
+}
